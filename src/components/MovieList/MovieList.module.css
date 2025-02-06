@@ -1,0 +1,33 @@
+@media only screen and (min-width: 768px) {
+  .movieList_wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .movieList_list {
+    padding-left: 30px;
+  }
+
+  .movieList_item {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .movieList_icon {
+    font-size: 20px;
+  }
+
+  .movieList_link {
+  }
+
+  .movieList_title {
+    font-size: 20px;
+    color: rgb(143, 10, 81);
+  }
+
+  .movieList_title:hover {
+    opacity: 0.7;
+  }
+}

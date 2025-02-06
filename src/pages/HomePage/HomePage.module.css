@@ -1,0 +1,15 @@
+@media only screen and (min-width: 768px) {
+  .homePage_section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .homePage_container {
+  }
+
+  .homePage_title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+}

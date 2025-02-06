@@ -1,0 +1,47 @@
+@media only screen and (min-width: 768px) {
+  .navigation_section {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .navigation_wrapper {
+    box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #ccc;
+  }
+
+  .navigation_nav {
+    padding-left: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    gap: 40px;
+  }
+
+  .navigation_link {
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .navigation_span {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .navigation_icon {
+    font-size: 30px;
+  }
+
+  .navigation_link:hover {
+    opacity: 0.7;
+  }
+
+  .navigation_active {
+    color: deeppink;
+  }
+
+  .navigation_outlet {
+    background-color: aquamarine;
+  }
+}

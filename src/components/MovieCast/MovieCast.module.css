@@ -1,0 +1,6 @@
+@media only screen and (min-width: 768px) {
+  .movieCast_wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
