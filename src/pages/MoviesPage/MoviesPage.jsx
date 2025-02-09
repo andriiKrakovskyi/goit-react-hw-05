@@ -28,9 +28,9 @@ export default function MoviesPage() {
         setIsLoading(true);
         setIsError(false);
 
-        const results = await dataMovies.fetchMovies(query);
+        const data = await dataMovies.fetchMovies(query);
 
-        setMovies(results);
+        setMovies(data);
       } catch {
         setIsError(true);
       } finally {
@@ -57,19 +57,3 @@ export default function MoviesPage() {
     </>
   );
 }
-
-// const handleSetQuery = (newQuery) => {
-//   if (newQuery === query) return;
-//   setQuery(newQuery);
-//   setPhotos([]);
-//   setPage(1);
-// };
-
-// const handleSubmit = (value) => {
-//   setSearchParams({ query: value });
-// };
-
-// const handleSubmit = (value) => {
-//   searchParams.set('query', value);
-//   setSearchParams(searchParams);
-// };

@@ -22,10 +22,10 @@ export default function MovieReviews() {
         setIsLoading(true);
         setIsError(false);
 
-        const results = await dataMovies.fetchReviewsById(movieId);
+        const data = await dataMovies.fetchReviewsById(movieId);
 
-        // setmovieReviews(results);
-        setmovieReviews(Array.isArray(results) ? results : []);
+        // setmovieReviews(data);
+        setmovieReviews(Array.isArray(data) ? data : []);
       } catch {
         setIsError(true);
       } finally {
@@ -35,14 +35,18 @@ export default function MovieReviews() {
     getData();
   }, [movieId]);
 
-  if (isError) return <ErrorMessage />;
-  if (isLoading) return <Loader />;
+  if (!movieReviews) {
+    return <Loader />;
+  }
+
+  // if (isError) return <ErrorMessage />;
+  // if (isLoading) return <Loader />;
 
   return (
     <section className={s.movieReviews_section}>
       <Container className={s.movieReviews_container}>
-        {/* {isError && <ErrorMessage />}
-        {isLoading && <Loader />} */}
+        {isError && <ErrorMessage />}
+        {isLoading && <Loader />}
         {movieReviews.length > 0 ? (
           <ul className={s.movieReviews_list}>
             {movieReviews.map((item) => (

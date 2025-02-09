@@ -6,11 +6,13 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage.jsx';
 import Loader from '../Loader/Loader.jsx';
 import { useParams } from 'react-router-dom';
 
+const defaultImg =
+  'https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster';
+
 export default function MovieDetails() {
   const { movieId } = useParams();
-  // console.log(movieId);
 
-  const [movieData, setMoviesId] = useState([]);
+  const [movieData, setMoviesId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -22,9 +24,8 @@ export default function MovieDetails() {
         setIsLoading(true);
         setIsError(false);
 
-        const results = await dataMovies.fetchMoviesById(movieId);
-
-        setMoviesId(results);
+        const data = await dataMovies.fetchMoviesById(movieId);
+        setMoviesId(data);
       } catch {
         setIsError(true);
       } finally {
@@ -34,7 +35,17 @@ export default function MovieDetails() {
     getData();
   }, [movieId]);
 
-  // if (!movieData) return <Loader />;
+  if (!movieData) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
+
+  // if (isError) return <ErrorMessage />;
+  // if (isLoading) return <Loader />;
+
   return (
     <section className={s.movieDetails_section}>
       <Container className={s.movieDetails_container}>
@@ -82,6 +93,3 @@ export default function MovieDetails() {
     </section>
   );
 }
-
-const defaultImg =
-  'https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster';

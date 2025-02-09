@@ -21,9 +21,10 @@ export default function HomePage() {
         setIsLoading(true);
         setIsError(false);
 
-        const results = await dataMovies.fetchTrendingMovies();
+        const data = await dataMovies.fetchTrendingMovies();
 
-        setTrending(results);
+        // setTrending(data);
+        setTrending(Array.isArray(data) ? data : []);
       } catch {
         setIsError(true);
       } finally {

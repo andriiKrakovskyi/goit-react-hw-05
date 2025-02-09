@@ -7,6 +7,9 @@ import * as dataMovies from '../../services/api.js';
 import ErrorMessage from '../ErrorMessage/ErrorMessage.jsx';
 import Loader from '../Loader/Loader.jsx';
 
+const defaultImg =
+  'https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster';
+
 export default function MovieCast() {
   const { movieId } = useParams();
 
@@ -22,10 +25,10 @@ export default function MovieCast() {
         setIsLoading(true);
         setIsError(false);
 
-        const results = await dataMovies.fetchCastById(movieId);
+        const data = await dataMovies.fetchCastById(movieId);
 
-        // setmovieCast(results);
-        setmovieCast(Array.isArray(results) ? results : []);
+        // setmovieCast(data);
+        setmovieCast(Array.isArray(data) ? data : []);
       } catch {
         setIsError(true);
       } finally {
@@ -35,14 +38,18 @@ export default function MovieCast() {
     getData();
   }, [movieId]);
 
-  if (isError) return <ErrorMessage />;
-  if (isLoading) return <Loader />;
+  if (!movieCast) {
+    return <Loader />;
+  }
+
+  // if (isError) return <ErrorMessage />;
+  // if (isLoading) return <Loader />;
 
   return (
     <section className={s.movieCast_section}>
       <Container className={s.movieCast_container}>
-        {/* {isError && <ErrorMessage />}
-        {isLoading && <Loader />} */}
+        {isError && <ErrorMessage />}
+        {isLoading && <Loader />}
         {movieCast.length > 0 ? (
           <ul className={s.movieCast_list}>
             {movieCast.map((item) => (
@@ -90,6 +97,3 @@ export default function MovieCast() {
     </section>
   );
 }
-
-const defaultImg =
-  'https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster';
