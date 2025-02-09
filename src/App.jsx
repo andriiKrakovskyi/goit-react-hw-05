@@ -1,10 +1,12 @@
 // import { Toaster } from 'react-hot-toast';
-// import { useParams } from 'react-router-dom';
+
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import Loader from './components/Loader/Loader';
 import Navigation from './components/Navigation/Navigation';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage'));
 const MovieDetailsPage = lazy(() =>
@@ -19,7 +21,7 @@ function App() {
   return (
     <main>
       <Navigation />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />

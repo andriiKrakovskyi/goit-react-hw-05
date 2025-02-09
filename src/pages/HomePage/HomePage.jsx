@@ -1,12 +1,10 @@
 import s from './HomePage.module.css';
-import Container from '../../components/Container/Container.jsx';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/Loader/Loader.jsx';
+import MovieList from '../../components/MovieList/MovieList.jsx';
 
 import { useLocation } from 'react-router-dom';
-import MovieList from '../../components/MovieList/MovieList.jsx';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as dataMovies from '../../services/api.js';
 
 export default function HomePage() {
@@ -23,7 +21,7 @@ export default function HomePage() {
         setIsLoading(true);
         setIsError(false);
 
-        const results = await dataMovies.fetchTendingMovies();
+        const results = await dataMovies.fetchTrendingMovies();
 
         setTrending(results);
       } catch {
@@ -35,14 +33,16 @@ export default function HomePage() {
     getData();
   }, []);
 
+  // if (!trending) {
+  //   return <h2>Loading...</h2>;
+  // }
+
   return (
-    <section className={s.homePage_section}>
-      <Container className={s.homePage_container}>
-        <h2 className={s.homePage_title}>Trending today</h2>
-        {isError && <ErrorMessage />}
-        {isLoading && <Loader />}
-        <MovieList trendingMovies={trending} />
-      </Container>
-    </section>
+    <>
+      <h2 className={s.homePage_title}>Trending today</h2>
+      {isError && <ErrorMessage />}
+      {isLoading && <Loader />}
+      <MovieList movies={trending} />
+    </>
   );
 }

@@ -1,65 +1,75 @@
-import s from './MoviesPage.module.css';
-import Container from '../../components/Container/Container.jsx';
-import toast from 'react-hot-toast';
-import { FcSearch } from 'react-icons/fc';
-// import MovieList from '../../components/MovieList/MovieList.jsx';
+import MovieList from '../../components/MovieList/MovieList.jsx';
+import SearchBar from '../../components/SearchBar/SearchBar.jsx';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
+import Loader from '../../components/Loader/Loader';
+import { useState, useEffect } from 'react';
+// import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import * as dataMovies from '../../services/api.js';
 
-export default function MoviesPage({ onSubmit, disabled }) {
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+export default function MoviesPage() {
+  // const { movieId } = useParams();
+  // console.log(movieId);
 
-    const form = evt.target;
-    const input = form.elements.inputMoviesPage;
-    const inputValue = input.value.trim();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-    if (!inputValue) {
-      toast.error('Please enter a search term');
-      return;
-    }
+  const query = searchParams.get('query') ?? '';
 
-    onSubmit(inputValue);
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-    // const handleSubmit = (value) => {
-    //   setSearchParams({ query: value });
-    // };
+  useEffect(() => {
+    // if (!movieId) return;
+    if (!query) return;
 
-    // const { movieId } = useParams();
-    // useEffect(() => {
-    //   if (!movieId) return;
-    // }, [movieId]);
+    const getData = async () => {
+      try {
+        setIsLoading(true);
+        setIsError(false);
+
+        const results = await dataMovies.fetchMovies(query);
+
+        setMovies(results);
+      } catch {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getData();
+  }, [query]);
+
+  const handleSubmit = (value) => {
+    setSearchParams({ query: value });
   };
 
   return (
-    <section className={s.moviesPage_section}>
-      <Container className={s.moviesPage_container}>
-        <form className={s.moviesPage_form} onSubmit={handleSubmit}>
-          <label>
-            <span className="visually_hidden">Search for movies</span>
-            <div className={s.inputWrapper}>
-              <FcSearch className={s.moviesPage_form_icon} />
-              <input
-                className={s.moviesPage_form_input}
-                name="inputMoviesPage"
-                type="text"
-                autoComplete="off"
-                autoFocus
-                placeholder="Search for movies"
-                maxLength="20"
-              />
-            </div>
-          </label>
-          <button
-            className={s.moviesPage_form_button}
-            disabled={disabled}
-            aria-label="Search movies"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
-
-        {/* <MovieList movies={movies} /> */}
-      </Container>
-    </section>
+    <>
+      <SearchBar
+        handleSubmit={handleSubmit}
+        disabled={isLoading}
+        query={query}
+      />
+      <MovieList movies={movies} />
+      {isError && <ErrorMessage />}
+      {isLoading && <Loader />}
+    </>
   );
 }
+
+// const handleSetQuery = (newQuery) => {
+//   if (newQuery === query) return;
+//   setQuery(newQuery);
+//   setPhotos([]);
+//   setPage(1);
+// };
+
+// const handleSubmit = (value) => {
+//   setSearchParams({ query: value });
+// };
+
+// const handleSubmit = (value) => {
+//   searchParams.set('query', value);
+//   setSearchParams(searchParams);
+// };

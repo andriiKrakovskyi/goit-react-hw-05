@@ -9,8 +9,8 @@ export default function Loader() {
         <div className={s.loader_wrapper}>
           <ColorRing
             visible={true}
-            height="500"
-            width="500"
+            height="200"
+            width="200"
             ariaLabel="color-ring-loading"
             wrapperStyle={{}}
             wrapperClass="color-ring-wrapper"

@@ -1,6 +1,61 @@
 @media only screen and (min-width: 768px) {
-  .movieCast_wrapper {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  .movieCast_section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .movieCast_container {
+  }
+
+  .movieCast_list {
+  }
+
+  .movieCast_item {
+    margin-bottom: 60px;
+  }
+
+  .movieCast_figure {
+  }
+
+  .movieCast_img {
+    margin-bottom: 30px;
+  }
+
+  .movieCast_figcaption {
+    margin-left: 30px;
+  }
+
+  .movieCast_wrapper_text {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .movieCast_icon {
+    font-size: 30px;
+  }
+
+  .movieCast_title {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .movieCast_icon {
+    font-size: 30px;
+  }
+
+  .movieCast_text {
+    font-size: 25px;
+  }
+
+  .movieCast_noCast {
+    font-size: 25px;
+    font-weight: bold;
   }
 }

@@ -1,0 +1,39 @@
+@media only screen and (min-width: 768px) {
+  .movieDetails_section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .movieDetails_container {
+    padding-right: 40px;
+    padding-left: 100px;
+  }
+
+  .movieDetails_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 50px;
+  }
+
+  .movieDetails_img_wrapper {
+  }
+
+  .movieDetails_img {
+    border-radius: 10px;
+    max-width: 350px;
+    height: auto;
+  }
+
+  .movieDetails_definition_term {
+    margin-bottom: 10px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .movieDetails_definition_description {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+}

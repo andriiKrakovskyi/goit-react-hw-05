@@ -11,10 +11,11 @@ export default function NotFoundPage() {
           <h2 className={s.notFoundPage_title}>
             Oops! The page you are looking for does not exist.
           </h2>
-          <div className={s.notFoundPage_wrapper_home}>
-            <FcHome className={s.notFoundPage_icon} />
-            <Link to="/">Go to Home</Link>
-          </div>
+
+          <Link to="/" className={s.notFoundPage_link}>
+            <FcHome className={s.notFoundPage_icon} aria-hidden="true" />
+            Go to Home
+          </Link>
         </div>
       </Container>
     </section>

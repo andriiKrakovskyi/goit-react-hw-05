@@ -1,0 +1,32 @@
+@media only screen and (min-width: 768px) {
+  .backButton_section {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .backButton_container {
+    padding: 0 100px;
+  }
+
+  .backButton_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 170px;
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(228, 228, 228);
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .backButton_link:hover {
+    background-color: rgb(200, 200, 200);
+  }
+
+  .backButton_icon {
+    font-size: 35px;
+  }
+}

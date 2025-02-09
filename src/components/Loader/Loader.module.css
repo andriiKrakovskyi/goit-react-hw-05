@@ -1,7 +1,9 @@
 @media only screen and (min-width: 768px) {
   .loader_section {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
   }
 
   .loader_wrapper {

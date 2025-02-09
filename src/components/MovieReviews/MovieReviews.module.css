@@ -1,6 +1,48 @@
 @media only screen and (min-width: 768px) {
-  .movieReviews_wrapper {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  .movieReviews_section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .movieReviews_container {
+  }
+
+  .movieReviews_list {
+  }
+
+  .movieReviews_item {
+    margin-bottom: 50px;
+  }
+
+  .movieReviews_description_list {
+    margin-bottom: 30px;
+  }
+
+  .movieReviews_description_wrapper {
+    margin-bottom: 30px;
+  }
+
+  .movieReviews_definition_term {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .movieReviews_icon {
+    font-size: 30px;
+  }
+
+  .movieReviews_definition_description {
+    font-size: 20px;
+    margin-left: 50px;
+  }
+
+  .movieReviews_noReviews {
+    font-size: 25px;
+    font-weight: bold;
   }
 }
