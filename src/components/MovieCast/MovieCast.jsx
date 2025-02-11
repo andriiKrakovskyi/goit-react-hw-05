@@ -14,6 +14,7 @@ export default function MovieCast() {
   const { movieId } = useParams();
 
   const [movieCast, setmovieCast] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -37,10 +38,6 @@ export default function MovieCast() {
     };
     getData();
   }, [movieId]);
-
-  if (!movieCast) {
-    return <Loader />;
-  }
 
   // if (isError) return <ErrorMessage />;
   // if (isLoading) return <Loader />;
@@ -77,11 +74,15 @@ export default function MovieCast() {
                         />
                         Name:
                       </strong>
-                      <em className={s.movieCast_text}>{item.name}</em>
+                      <em className={s.movieCast_text}>
+                        {item.name ?? 'No data available'}
+                      </em>
                     </div>
                     <div className={s.movieCast_wrapper_text}>
                       <strong className={s.movieCast_title}>Character:</strong>
-                      <em className={s.movieCast_text}>{item.character}</em>
+                      <em className={s.movieCast_text}>
+                        {item.character ?? 'No data available'}
+                      </em>
                     </div>
                   </figcaption>
                 </figure>

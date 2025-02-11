@@ -3,6 +3,8 @@ import Container from '../Container/Container';
 import clsx from 'clsx';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FcManager, FcViewDetails } from 'react-icons/fc';
+import { Suspense } from 'react';
+import Loader from '../Loader/Loader';
 const buildLinkClass = ({ isActive }) => {
   return clsx(s.movieLinks_nav_link, isActive && s.movieLinks_active);
 };
@@ -34,9 +36,11 @@ export default function MovieLinks() {
           </nav>
         </div>
 
-        <div className={s.movieLinks_qutlet}>
-          <Outlet />
-        </div>
+        <Suspense fallback={<Loader />}>
+          <div className={s.movieLinks_outlet}>
+            <Outlet />
+          </div>
+        </Suspense>
       </Container>
     </section>
   );

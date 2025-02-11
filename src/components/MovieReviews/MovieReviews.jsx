@@ -35,10 +35,6 @@ export default function MovieReviews() {
     getData();
   }, [movieId]);
 
-  if (!movieReviews) {
-    return <Loader />;
-  }
-
   // if (isError) return <ErrorMessage />;
   // if (isLoading) return <Loader />;
 

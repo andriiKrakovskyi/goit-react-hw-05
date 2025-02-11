@@ -1,7 +1,6 @@
 import s from './Navigation.module.css';
 
 import { NavLink } from 'react-router-dom';
-// import { Navigate, useState } from 'react-router-dom';
 import clsx from 'clsx';
 import { FcHome, FcFilmReel } from 'react-icons/fc';
 const buildLinkClass = ({ isActive }) => {

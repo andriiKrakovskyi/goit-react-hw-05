@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { FcFilm } from 'react-icons/fc';
 
 export default function MovieList({ movies }) {
+  // Передаёт текущий location (адрес url) в state каждой ссылки.
+  // useLocation() хук, который даёт информацию о текущем URL
   const location = useLocation();
 
   return (

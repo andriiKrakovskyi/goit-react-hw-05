@@ -35,6 +35,8 @@ export default function MovieDetails() {
     getData();
   }, [movieId]);
 
+  // Ране повернення, робимо коли  useState(null)
+  //  при useState([]) рание повернення не робимов
   if (!movieData) {
     return (
       <div>
@@ -42,9 +44,6 @@ export default function MovieDetails() {
       </div>
     );
   }
-
-  // if (isError) return <ErrorMessage />;
-  // if (isLoading) return <Loader />;
 
   return (
     <section className={s.movieDetails_section}>

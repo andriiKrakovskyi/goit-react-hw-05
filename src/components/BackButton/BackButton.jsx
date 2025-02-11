@@ -6,6 +6,12 @@ import { FcUndo } from 'react-icons/fc';
 
 export default function BackButton() {
   const location = useLocation();
+
+  //useRef-Позволяет сохраньть значения между рендарами
+  //часто работает в связки с location
+  //При обновлении странице пропадает state и стает null
+  //для этого делаем (location?.state ?? '/movies')
+  // /movies' как деф значения.
   const goBackUrl = useRef(location?.state ?? '/movies');
 
   return (
